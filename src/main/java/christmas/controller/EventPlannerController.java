@@ -7,17 +7,19 @@ import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.time.LocalDate;
 import java.util.List;
 
 public class EventPlannerController {
     public void start() {
         OutputView.printGreetingsMessage();
         int day = askDay();
+        LocalDate now = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH, day);
         Orders orders = askOrders();
-        OutputView.printPreviewOfEventMessage(SystemConst.CURRENT_MONTH, day);
+        OutputView.printPreviewOfEventMessage(now);
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
-        EventPlanner eventPlanner = new EventPlanner(day);
+        EventPlanner eventPlanner = new EventPlanner(now);
         List<Benefit> benefits = eventPlanner.getBenefits(orders);
         OutputView.printBenefitsInfo(benefits);
 

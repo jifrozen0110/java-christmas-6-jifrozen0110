@@ -1,10 +1,12 @@
 package christmas.domain;
 
+import java.time.LocalDate;
+
 public interface Event {
 
-    boolean isValidDay(int month, int day);
+    boolean isValidDay(LocalDate localDate);
 
-    int applyDiscount(Orders orders, int day, int month);
+    int applyDiscount(Orders orders, LocalDate localDate);
 
     String getName();
 }

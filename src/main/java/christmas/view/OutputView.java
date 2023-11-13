@@ -3,6 +3,7 @@ package christmas.view;
 import christmas.common.utils.CurrencyUtil;
 import christmas.domain.Benefit;
 import christmas.domain.Orders;
+import java.time.LocalDate;
 import java.util.List;
 
 public class OutputView {
@@ -38,8 +39,8 @@ public class OutputView {
         println(INPUT_ORDER_MESSAGE);
     }
 
-    public static void printPreviewOfEventMessage(int month, int day) {
-        println(String.format(PREVIEW_OF_EVENT_MESSAGE, month, day));
+    public static void printPreviewOfEventMessage(LocalDate date) {
+        println(String.format(PREVIEW_OF_EVENT_MESSAGE, date.getMonthValue(), date.getDayOfMonth()));
     }
 
     public static void printOrderMenuList(Orders orders) {

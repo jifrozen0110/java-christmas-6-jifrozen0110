@@ -1,22 +1,22 @@
 package christmas.domain;
 
-import christmas.common.consts.SystemConst;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventPlanner {
     private List<Event> events = new ArrayList<>();
     private List<Benefit> benefits = new ArrayList<>();
-    private int day;
+    private LocalDate date;
 
-    public EventPlanner(int day) {
-        this.day = day;
+    public EventPlanner(LocalDate date) {
+        this.date = date;
         events.add(new ChrismasEvent());
     }
 
     public List<Benefit> getBenefits(Orders orders) {
         for (Event event : events) {
-            int price = event.applyDiscount(orders, day, SystemConst.CURRENT_MONTH);
+            int price = event.applyDiscount(orders, date);
             if (price == 0) {
                 continue;
             }

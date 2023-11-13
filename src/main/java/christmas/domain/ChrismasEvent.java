@@ -1,30 +1,35 @@
 package christmas.domain;
 
+import christmas.common.consts.SystemConst;
+import java.time.LocalDate;
+
 public class ChrismasEvent implements Event {
     private static final String NAME = "크리스마스 디데이 할인";
-    private static final int START_DAY = 1;
-    private static final int END_DAY = 25;
+    private static final LocalDate START_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
+            SystemConst.START_DAY);
+    private static final LocalDate END_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
+            SystemConst.CHRISTMAS_DAY);
     private static final int BASE_DISCOUNT = 1000;
     private static final int DAILY_INCREMENT = 100;
     private static final int EVENT_MONTH = 12;
 
     @Override
-    public boolean isValidDay(int month, int day) {
-        if (EVENT_MONTH != month) {
+    public boolean isValidDay(final LocalDate localDate) {
+        if (EVENT_MONTH != localDate.getMonthValue()) {
             return false;
         }
-        if (START_DAY <= day && day <= END_DAY) {
+        if (localDate.isAfter(START_DAY) && localDate.isBefore(END_DAY)) {
             return true;
         }
         return false;
     }
 
     @Override
-    public int applyDiscount(final Orders orders, final int day, final int month) {
-        if (!isValidDay(month, day)) {
+    public int applyDiscount(final Orders orders, final LocalDate localDate) {
+        if (!isValidDay(localDate)) {
             return 0;
         }
-        return BASE_DISCOUNT + (day - START_DAY) * DAILY_INCREMENT;
+        return BASE_DISCOUNT + (localDate.compareTo(START_DAY)) * DAILY_INCREMENT;
     }
 
     @Override
