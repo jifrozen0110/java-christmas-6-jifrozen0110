@@ -4,8 +4,8 @@ import christmas.common.consts.SystemConst;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class WeekdayEvent implements Event {
-    private static final String NAME = "평일 할인";
+public class WeekendEvent implements Event {
+    private static final String NAME = "주말 할인";
     private static final LocalDate START_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
             SystemConst.START_DAY);
     private static final LocalDate END_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
@@ -14,7 +14,7 @@ public class WeekdayEvent implements Event {
     @Override
     public boolean isValidDay(final LocalDate localDate) {
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-        if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
+        if (dayOfWeek != DayOfWeek.FRIDAY && dayOfWeek != DayOfWeek.SATURDAY) {
             return false;
         }
         if (!localDate.isAfter(START_DAY) || !localDate.isBefore(END_DAY)) {
@@ -30,7 +30,7 @@ public class WeekdayEvent implements Event {
         }
         int totalDiscount = 0;
         for (Order order : orders) {
-            if (order.getCategory() == Category.DESSERT) {
+            if (order.getCategory() == Category.MAIN) {
                 totalDiscount += SystemConst.CURRENT_YEAR;
             }
         }
