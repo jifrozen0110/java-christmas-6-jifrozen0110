@@ -27,7 +27,7 @@ public class InputView {
         return str.split(REGEX);
     }
 
-    public static int nextDay(int month) {
+    public static int nextDay(final int month) {
         int n = nextInt();
         try {
             DateValidator.validate(month, n);

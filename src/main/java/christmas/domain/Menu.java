@@ -27,13 +27,13 @@ public enum Menu {
     private final int price;
     private final Category category;
 
-    Menu(String name, int price, Category category) {
+    Menu(final String name, final int price, final Category category) {
         this.name = name;
         this.price = price;
         this.category = category;
     }
 
-    public static Menu from(String name) {
+    public static Menu from(final String name) {
         for (Menu menu : Menu.values()) {
             if (menu.getName().equals(name)) {
                 return menu;

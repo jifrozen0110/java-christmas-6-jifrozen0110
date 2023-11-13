@@ -24,7 +24,7 @@ public class WeekendEvent implements Event {
     }
 
     @Override
-    public int applyDiscount(Orders orders, LocalDate localDate) {
+    public int applyDiscount(final Orders orders, final LocalDate localDate) {
         if (!isValidDay(localDate)) {
             return 0;
         }

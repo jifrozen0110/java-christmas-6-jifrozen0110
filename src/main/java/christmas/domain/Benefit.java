@@ -4,7 +4,7 @@ public class Benefit {
     private final String name;
     private final int price;
 
-    public Benefit(String name, int price) {
+    public Benefit(final String name, final int price) {
         this.name = name;
         this.price = price;
     }

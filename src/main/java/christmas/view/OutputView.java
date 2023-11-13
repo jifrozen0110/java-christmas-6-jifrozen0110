@@ -39,21 +39,21 @@ public class OutputView {
         println(INPUT_ORDER_MESSAGE);
     }
 
-    public static void printPreviewOfEventMessage(LocalDate date) {
+    public static void printPreviewOfEventMessage(final LocalDate date) {
         println(String.format(PREVIEW_OF_EVENT_MESSAGE, date.getMonthValue(), date.getDayOfMonth()));
     }
 
-    public static void printOrderMenuList(Orders orders) {
+    public static void printOrderMenuList(final Orders orders) {
         println(ORDER_MENU_LIST_MESSAGE);
         print(orders.toString());
     }
 
-    public static void printTotalOrdersPrice(Orders orders) {
+    public static void printTotalOrdersPrice(final Orders orders) {
         println(TOTAL_PRICE_BEFORE_EVENTS_MESSAGE);
         println(CurrencyUtil.fromToKRW(orders.getTotalPrice()));
     }
 
-    public static void printBenefitsInfo(List<Benefit> benefits) {
+    public static void printBenefitsInfo(final List<Benefit> benefits) {
         println(BENEFITS_LIST_MESSAGE);
         for (Benefit benefit : benefits) {
             println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));
