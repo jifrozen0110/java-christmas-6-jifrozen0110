@@ -6,6 +6,8 @@ import christmas.common.validator.DateValidator;
 
 public class InputView {
 
+    public static final String REGEX = ",";
+
     public static String next() {
         return Console.readLine();
     }
@@ -18,6 +20,11 @@ public class InputView {
             OutputView.printErr(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
             return nextInt();
         }
+    }
+
+    public static String[] nextArrString() {
+        String str = next();
+        return str.split(REGEX);
     }
 
     public static int nextDay(int month) {
