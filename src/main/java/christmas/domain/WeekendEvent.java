@@ -31,7 +31,7 @@ public class WeekendEvent implements Event {
         int totalDiscount = 0;
         for (Order order : orders) {
             if (order.getCategory() == Category.MAIN) {
-                totalDiscount += SystemConst.CURRENT_YEAR;
+                totalDiscount += (SystemConst.CURRENT_YEAR * order.getCount());
             }
         }
         return totalDiscount;
