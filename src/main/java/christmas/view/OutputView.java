@@ -1,7 +1,9 @@
 package christmas.view;
 
 import christmas.common.utils.CurrencyUtil;
+import christmas.domain.Benefit;
 import christmas.domain.Orders;
+import java.util.List;
 
 public class OutputView {
     private static final String GREETINGS_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -10,6 +12,7 @@ public class OutputView {
     private static final String PREVIEW_OF_EVENT_MESSAGE = "%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_MENU_LIST_MESSAGE = "<주문 메뉴>";
     private static final String TOTAL_PRICE_BEFORE_EVENTS_MESSAGE = "<할인 전 총주문 금액>";
+    private static final String BENEFITS_LIST_MESSAGE = "<혜택 내역>";
 
     public static void print(final String text) {
         System.out.print(text);
@@ -47,6 +50,13 @@ public class OutputView {
     public static void printTotalOrdersPrice(Orders orders) {
         println(TOTAL_PRICE_BEFORE_EVENTS_MESSAGE);
         println(CurrencyUtil.fromToKRW(orders.getTotalPrice()));
+    }
+
+    public static void printBenefitsInfo(List<Benefit> benefits) {
+        println(BENEFITS_LIST_MESSAGE);
+        for (Benefit benefit : benefits) {
+            println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));
+        }
     }
 
 }
