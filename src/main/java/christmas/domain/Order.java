@@ -44,6 +44,10 @@ public class Order {
         return menu.getPrice() * count;
     }
 
+    public Category getCategory() {
+        return menu.getCategory();
+    }
+
     private static void validate(final String name, final int count) {
         if (name == null) {
             OutputView.printErr(ErrorMessage.NULL_VALUE_ERROR.getErrorMessage());

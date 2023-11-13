@@ -12,6 +12,7 @@ public class EventPlanner {
     public EventPlanner(LocalDate date) {
         this.date = date;
         events.add(new ChrismasEvent());
+        events.add(new WeekdayEvent());
     }
 
     public List<Benefit> getBenefits(Orders orders) {
