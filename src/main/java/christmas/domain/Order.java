@@ -40,6 +40,10 @@ public class Order {
         return this.count;
     }
 
+    public int getPrice() {
+        return menu.getPrice() * count;
+    }
+
     private static void validate(final String name, final int count) {
         if (name == null) {
             OutputView.printErr(ErrorMessage.NULL_VALUE_ERROR.getErrorMessage());
@@ -68,6 +72,11 @@ public class Order {
         }
         Order order = (Order) obj;
         return menu.getName().equals(((Order) obj).menu.getName());
+    }
+
+    @Override
+    public String toString() {
+        return menu.getName() + " " + count + "개";
     }
 
 }

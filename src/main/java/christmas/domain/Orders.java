@@ -3,8 +3,9 @@ package christmas.domain;
 import christmas.common.consts.ErrorMessage;
 import christmas.view.OutputView;
 import java.util.HashSet;
+import java.util.Iterator;
 
-public class Orders {
+public class Orders implements Iterable<Order> {
     private static final int MAX_ORDER_SIZE = 20;
     private final HashSet<Order> orders;
 
@@ -33,10 +34,26 @@ public class Orders {
         return size;
     }
 
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Order order : orders) {
+            totalPrice += order.getPrice();
+        }
+        return totalPrice;
+    }
+
+    @Override
+    public Iterator<Order> iterator() {
+        return orders.iterator();
+    }
+
     @Override
     public String toString() {
-        return "Orders{" +
-                "orders=" + orders +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        for (Order order : orders) {
+            sb.append(order.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

@@ -12,7 +12,8 @@ public class EventPlannerController {
         int day = askDay();
         Orders orders = askOrders();
         OutputView.printPreviewOfEventMessage(SystemConst.CURRENT_MONTH, day);
-
+        OutputView.printOrderMenuList(orders);
+        OutputView.printTotalOrdersPrice(orders);
     }
 
     private static Orders askOrders() {
