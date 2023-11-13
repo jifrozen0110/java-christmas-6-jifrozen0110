@@ -14,6 +14,7 @@ public class EventPlanner {
         events.add(new ChrismasEvent());
         events.add(new WeekdayEvent());
         events.add(new WeekendEvent());
+        events.add(new StarEvent());
     }
 
     public List<Benefit> getBenefits(Orders orders) {
