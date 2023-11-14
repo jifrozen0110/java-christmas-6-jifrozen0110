@@ -14,10 +14,7 @@ public class WeekdayEvent implements Event {
 
     @Override
     public boolean validatePrice(Orders orders) {
-        if (orders.getTotalPrice() >= EVENT_EXECUTION_MONEY) {
-            return true;
-        }
-        return false;
+        return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 
     @Override
