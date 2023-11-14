@@ -18,12 +18,12 @@ public class EventPlannerController {
         OutputView.printPreviewOfEventMessage(now);
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
-        EventPlanner eventPlanner = new EventPlanner(now);
-        Benefits benefits = eventPlanner.getBenefits(orders);
+        EventPlanner eventPlanner = new EventPlanner(now, orders);
+        Benefits benefits = eventPlanner.getBenefits();
         OutputView.printBenefitsInfo(benefits);
         OutputView.printTotalBenefitsPrice(benefits);
-        OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits(orders));
-        
+        OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
+        OutputView.printDecemberEventBadge(eventPlanner.getBadge());
     }
 
     private static Orders askOrders() {
