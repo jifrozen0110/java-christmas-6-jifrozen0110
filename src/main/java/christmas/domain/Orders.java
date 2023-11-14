@@ -21,7 +21,7 @@ public class Orders implements Iterable<Order> {
             }
         }
         if (isBeverage) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ONLY_BEVERAGE_ORDER_ERROR.getErrorMessage());
         }
     }
 
