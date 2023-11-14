@@ -11,7 +11,7 @@ public class Benefits implements Iterable<Benefit> {
         this.benefits = new ArrayList<>();
     }
 
-    public void add(Benefit benefit) {
+    public void add(final Benefit benefit) {
         benefits.add(benefit);
     }
 

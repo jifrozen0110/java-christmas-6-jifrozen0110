@@ -60,7 +60,7 @@ public class EventPlanner {
             if (giftMenu == null) {
                 continue;
             }
-            benefits.add(new Benefit(gift.getName(), giftMenu.getPrice()));
+            benefits.add(Benefit.of(gift.getName(), giftMenu.getPrice()));
             giftOrders.add(Order.of(giftMenu.getName(), 1));
         }
     }
@@ -71,7 +71,7 @@ public class EventPlanner {
             if (price == 0) {
                 continue;
             }
-            benefits.add(new Benefit(event.getName(), price));
+            benefits.add(Benefit.of(event.getName(), price));
         }
     }
 }
