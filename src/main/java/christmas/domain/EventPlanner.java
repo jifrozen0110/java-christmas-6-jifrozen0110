@@ -33,6 +33,9 @@ public class EventPlanner {
 
         for (Gift gift : gifts) {
             Menu giftMenu = gift.getGift(orders, date);
+            if (giftMenu == null) {
+                continue;
+            }
             benefits.add(new Benefit(gift.getName(), giftMenu.getPrice()));
             giftOrders.add(Order.of(giftMenu.getName(), 1));
         }
