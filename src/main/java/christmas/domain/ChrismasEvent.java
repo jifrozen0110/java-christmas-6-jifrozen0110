@@ -11,13 +11,9 @@ public class ChrismasEvent implements Event {
             SystemConst.CHRISTMAS_DAY);
     private static final int BASE_DISCOUNT = 1000;
     private static final int DAILY_INCREMENT = 100;
-    private static final int EVENT_MONTH = 12;
 
     @Override
     public boolean isValidDay(final LocalDate localDate) {
-        if (EVENT_MONTH != localDate.getMonthValue()) {
-            return false;
-        }
         if (localDate.isAfter(START_DAY) && localDate.isBefore(END_DAY)) {
             return true;
         }
