@@ -6,7 +6,6 @@ import java.util.List;
 
 public class EventPlanner {
     private List<Event> events = new ArrayList<>();
-    private List<Benefit> benefits = new ArrayList<>();
     private LocalDate date;
 
     public EventPlanner(LocalDate date) {
@@ -17,7 +16,8 @@ public class EventPlanner {
         events.add(new StarEvent());
     }
 
-    public List<Benefit> getBenefits(Orders orders) {
+    public Benefits getBenefits(Orders orders) {
+        Benefits benefits = new Benefits();
         for (Event event : events) {
             int price = event.applyDiscount(orders, date);
             if (price == 0) {

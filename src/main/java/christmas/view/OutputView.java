@@ -2,9 +2,9 @@ package christmas.view;
 
 import christmas.common.utils.CurrencyUtil;
 import christmas.domain.Benefit;
+import christmas.domain.Benefits;
 import christmas.domain.Orders;
 import java.time.LocalDate;
-import java.util.List;
 
 public class OutputView {
     private static final String GREETINGS_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -53,7 +53,7 @@ public class OutputView {
         println(CurrencyUtil.fromToKRW(orders.getTotalPrice()));
     }
 
-    public static void printBenefitsInfo(final List<Benefit> benefits) {
+    public static void printBenefitsInfo(final Benefits benefits) {
         println(BENEFITS_LIST_MESSAGE);
         for (Benefit benefit : benefits) {
             println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));

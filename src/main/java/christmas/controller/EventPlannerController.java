@@ -1,14 +1,13 @@
 package christmas.controller;
 
 import christmas.common.consts.SystemConst;
-import christmas.domain.Benefit;
+import christmas.domain.Benefits;
 import christmas.domain.EventPlanner;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.time.LocalDate;
-import java.util.List;
 
 public class EventPlannerController {
     public void start() {
@@ -20,7 +19,7 @@ public class EventPlannerController {
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
         EventPlanner eventPlanner = new EventPlanner(now);
-        List<Benefit> benefits = eventPlanner.getBenefits(orders);
+        Benefits benefits = eventPlanner.getBenefits(orders);
         OutputView.printBenefitsInfo(benefits);
 
     }
