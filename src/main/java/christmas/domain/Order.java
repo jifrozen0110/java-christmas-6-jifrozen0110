@@ -69,7 +69,7 @@ public class Order {
             return false;
         }
         Order order = (Order) obj;
-        return menu.getName().equals(((Order) obj).menu.getName());
+        return menu.getName().equals((order).menu.getName());
     }
 
     @Override
