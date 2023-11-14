@@ -15,6 +15,10 @@ public class Benefits implements Iterable<Benefit> {
         benefits.add(benefit);
     }
 
+    public int size() {
+        return benefits.size();
+    }
+
 
     public int getTotalBenefits() {
         int totalBenefits = 0;

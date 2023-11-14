@@ -62,6 +62,10 @@ public class OutputView {
 
     public static void printBenefitsInfo(final Benefits benefits) {
         println(BENEFITS_LIST_MESSAGE);
+        if (benefits.size() == 0) {
+            println(NOTHING);
+            return;
+        }
         for (Benefit benefit : benefits) {
             println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));
         }
@@ -88,6 +92,10 @@ public class OutputView {
 
     public static void printGiftMenu(final Orders orders) {
         println(GIFT_MENU_MESSAGE);
+        if (orders.size() == 0) {
+            println(NOTHING);
+            return;
+        }
         print(orders.toString());
     }
 }
