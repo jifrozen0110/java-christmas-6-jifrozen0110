@@ -14,7 +14,7 @@ public class StarEvent implements Event {
     private static final int BASE_DISCOUNT = 1000;
 
     @Override
-    public boolean validatePrice(Orders orders) {
+    public boolean validatePrice(final Orders orders) {
         return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 

@@ -12,7 +12,7 @@ public class DecemberGift implements Gift {
             SystemConst.DECEMBER_END_DAY);
 
     @Override
-    public boolean validatePrice(Orders orders) {
+    public boolean validatePrice(final Orders orders) {
         return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 
@@ -22,7 +22,7 @@ public class DecemberGift implements Gift {
     }
 
     @Override
-    public Menu getGift(Orders orders, LocalDate localDate) {
+    public Menu getGift(final Orders orders, final LocalDate localDate) {
         if (!isValidDay(localDate) || !validatePrice(orders)) {
             return null;
         }

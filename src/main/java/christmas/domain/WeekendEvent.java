@@ -13,7 +13,7 @@ public class WeekendEvent implements Event {
             SystemConst.DECEMBER_END_DAY);
 
     @Override
-    public boolean validatePrice(Orders orders) {
+    public boolean validatePrice(final Orders orders) {
         return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 

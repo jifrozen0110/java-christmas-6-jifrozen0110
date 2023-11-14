@@ -14,7 +14,7 @@ public class ChristmasEvent implements Event {
     private static final int DAILY_INCREMENT = 100;
 
     @Override
-    public boolean validatePrice(Orders orders) {
+    public boolean validatePrice(final Orders orders) {
         return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 

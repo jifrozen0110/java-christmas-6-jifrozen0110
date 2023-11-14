@@ -18,7 +18,7 @@ public class Order {
         return new Order(christmas.domain.Menu.from(name), count);
     }
 
-    public static Order parseOrder(String str) {
+    public static Order parseOrder(final String str) {
         String[] order = str.split(REGEX);
         if (order.length != 2) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
