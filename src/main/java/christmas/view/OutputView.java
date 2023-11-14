@@ -14,6 +14,9 @@ public class OutputView {
     private static final String ORDER_MENU_LIST_MESSAGE = "<주문 메뉴>";
     private static final String TOTAL_PRICE_BEFORE_EVENTS_MESSAGE = "<할인 전 총주문 금액>";
     private static final String BENEFITS_LIST_MESSAGE = "<혜택 내역>";
+    private static final String TOTAL_BENEFITS_PRICE_MESSAGE = "<총혜택 금액>";
+    private static final String ESTIMATED_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
+
 
     public static void print(final String text) {
         System.out.print(text);
@@ -58,6 +61,16 @@ public class OutputView {
         for (Benefit benefit : benefits) {
             println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));
         }
+    }
+
+    public static void printTotalBenefitsPrice(final Benefits benefits) {
+        println(TOTAL_BENEFITS_PRICE_MESSAGE);
+        println("-" + CurrencyUtil.fromToKRW(benefits.getTotalBenefits()));
+    }
+
+    public static void printEstimatedPriceAfterDiscount(int amount) {
+        println(ESTIMATED_PRICE_AFTER_DISCOUNT_MESSAGE);
+        println(CurrencyUtil.fromToKRW(amount));
     }
 
 }

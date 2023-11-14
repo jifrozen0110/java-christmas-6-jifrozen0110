@@ -21,7 +21,9 @@ public class EventPlannerController {
         EventPlanner eventPlanner = new EventPlanner(now);
         Benefits benefits = eventPlanner.getBenefits(orders);
         OutputView.printBenefitsInfo(benefits);
-
+        OutputView.printTotalBenefitsPrice(benefits);
+        OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits(orders));
+        
     }
 
     private static Orders askOrders() {
