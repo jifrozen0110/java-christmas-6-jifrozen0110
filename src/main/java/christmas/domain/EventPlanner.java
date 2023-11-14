@@ -8,16 +8,18 @@ public class EventPlanner {
     private List<Event> events = new ArrayList<>();
     private Benefits benefits = new Benefits();
     private LocalDate date;
+    private Orders orders;
 
-    public EventPlanner(LocalDate date) {
+    public EventPlanner(LocalDate date, Orders orders) {
         this.date = date;
+        this.orders = orders;
         events.add(new ChrismasEvent());
         events.add(new WeekdayEvent());
         events.add(new WeekendEvent());
         events.add(new StarEvent());
     }
 
-    public Benefits getBenefits(Orders orders) {
+    public Benefits getBenefits() {
         for (Event event : events) {
             int price = event.applyDiscount(orders, date);
             if (price == 0) {
@@ -28,7 +30,17 @@ public class EventPlanner {
         return benefits;
     }
 
-    public int getTotalPriceArfterBenefits(Orders orders) {
+    public Badge getBadge() {
+        int totalBenefitsPrice = benefits.getTotalBenefits();
+        for (Badge badge : Badge.values()) {
+            if (badge.getPrice() <= totalBenefitsPrice) {
+                return badge;
+            }
+        }
+        return null;
+    }
+
+    public int getTotalPriceArfterBenefits() {
         return orders.getTotalPrice() - benefits.getTotalBenefits();
     }
 
