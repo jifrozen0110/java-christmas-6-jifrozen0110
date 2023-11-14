@@ -19,7 +19,7 @@ class ChristmasEventTest {
     void setUp() {
         christmasEvent = new ChristmasEvent();
         duringEvent = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH, SystemConst.START_DAY + 6);
-        beforeEvent = duringEvent.minusDays(3);
+        beforeEvent = duringEvent.minusDays(7);
         afterEvent = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH, SystemConst.CHRISTMAS_DAY)
                 .plusDays(1);
         orders = new Orders();
