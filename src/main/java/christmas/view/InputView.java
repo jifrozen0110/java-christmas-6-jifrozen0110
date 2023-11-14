@@ -17,8 +17,7 @@ public class InputView {
             int n = Integer.parseInt(next());
             return n;
         } catch (NumberFormatException e) {
-            OutputView.printErr(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
-            return nextInt();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT_ERROR.getErrorMessage());
         }
     }
 
@@ -29,11 +28,7 @@ public class InputView {
 
     public static int nextDay(final int month) {
         int n = nextInt();
-        try {
-            DateValidator.validate(month, n);
-        } catch (IllegalArgumentException e) {
-            return nextDay(month);
-        }
+        DateValidator.validate(month, n);
         return n;
     }
 

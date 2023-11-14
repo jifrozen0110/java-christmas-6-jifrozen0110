@@ -1,7 +1,6 @@
 package christmas.common.validator;
 
 import christmas.common.consts.ErrorMessage;
-import christmas.view.OutputView;
 
 public class DateValidator {
 
@@ -20,13 +19,11 @@ public class DateValidator {
 
     public static void validate(int month, int day) {
         if (month < MIN_MONTH || month > MAX_MONTH) {
-            OutputView.printErr(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
         }
 
         int maxDay = getMaxDay(month);
         if (day < MIN_DAY || day > maxDay) {
-            OutputView.printErr(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
         }
     }

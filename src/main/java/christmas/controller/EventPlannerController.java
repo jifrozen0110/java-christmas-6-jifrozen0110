@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.common.consts.ErrorMessage;
 import christmas.common.consts.SystemConst;
 import christmas.domain.Benefits;
 import christmas.domain.EventPlanner;
@@ -25,7 +26,6 @@ public class EventPlannerController {
         OutputView.printTotalBenefitsPrice(benefits);
         OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
         OutputView.printDecemberEventBadge(eventPlanner.getBadge());
-
     }
 
     private static Orders askOrders() {
@@ -48,6 +48,7 @@ public class EventPlannerController {
             int day = InputView.nextDay(SystemConst.CURRENT_MONTH);
             return day;
         } catch (IllegalArgumentException e) {
+            OutputView.printErr(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
             return askDay();
         }
     }
