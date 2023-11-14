@@ -38,6 +38,7 @@ public class EventPlannerController {
             }
             return orders;
         } catch (IllegalArgumentException e) {
+            OutputView.printErr(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
             return askOrders();
         }
     }

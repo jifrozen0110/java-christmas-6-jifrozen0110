@@ -1,28 +1,26 @@
 package christmas.domain;
 
 import christmas.common.consts.ErrorMessage;
-import christmas.view.OutputView;
 import java.util.Objects;
 
 public class Order {
     public static final String REGEX = "-";
-    private Menu menu;
-    private int count;
+    private final Menu menu;
+    private final int count;
 
     private Order(final Menu menu, final int count) {
+        validate(menu, count);
         this.menu = menu;
         this.count = count;
     }
 
     public static Order of(String name, int count) {
-        validate(name, count);
-        return new Order(Menu.from(name), count);
+        return new Order(christmas.domain.Menu.from(name), count);
     }
 
     public static Order parseOrder(String str) {
         String[] order = str.split(REGEX);
         if (order.length != 2) {
-            OutputView.printErr(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
         }
         String name = order[0];
@@ -30,7 +28,6 @@ public class Order {
         try {
             count = Integer.parseInt(order[1]);
         } catch (NumberFormatException e) {
-            OutputView.printErr(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
         }
         return of(name, count);
@@ -48,14 +45,11 @@ public class Order {
         return menu.getCategory();
     }
 
-    private static void validate(final String name, final int count) {
-        if (name == null) {
-            OutputView.printErr(ErrorMessage.NULL_VALUE_ERROR.getErrorMessage());
+    private static void validate(final Menu menu, final int count) {
+        if (menu == null) {
             throw new IllegalArgumentException(ErrorMessage.NULL_VALUE_ERROR.getErrorMessage());
         }
-
         if (count < 1) {
-            OutputView.printErr(ErrorMessage.ZERO_VALUE_ERROR.getErrorMessage());
             throw new IllegalArgumentException(ErrorMessage.ZERO_VALUE_ERROR.getErrorMessage());
         }
     }
