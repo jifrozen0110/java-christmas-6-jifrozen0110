@@ -8,7 +8,7 @@ public class DateValidator {
     private static final int MAX_MONTH = 12;
     private static final int MIN_DAY = 1;
     private static final int MAX_DAY_30 = 30;
-    private static final int MAX_DAY_28 = 28;
+    private static final int MAX_DAY_29 = 29;
     private static final int MAX_DAY_31 = 31;
 
     private static final int APRIL = 4;
@@ -36,7 +36,7 @@ public class DateValidator {
             case NOVEMBER:
                 return MAX_DAY_30;
             case FEBRUARY:
-                return MAX_DAY_28;
+                return MAX_DAY_29;
             default:
                 return MAX_DAY_31;
         }
