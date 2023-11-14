@@ -12,18 +12,13 @@ import java.time.LocalDate;
 public class EventPlannerController {
     public void start() {
         OutputView.printGreetingsMessage();
-        int day = askDay();
-        LocalDate now = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH, day);
+        LocalDate now = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH, askDay());
+
         Orders orders = askOrders();
-        OutputView.printPreviewOfEventMessage(now);
-        OutputView.printOrderMenuList(orders);
-        OutputView.printTotalOrdersPrice(orders);
+        OutputView.printPreviewOfEvent(now, orders);
+
         EventPlanner eventPlanner = new EventPlanner(now, orders);
-        OutputView.printGiftMenu(eventPlanner.getGifts());
-        OutputView.printBenefitsInfo(eventPlanner.getBenefits());
-        OutputView.printTotalBenefitsPrice(eventPlanner.getBenefits());
-        OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
-        OutputView.printDecemberEventBadge(eventPlanner.getBadge());
+        OutputView.printEventDetails(eventPlanner);
     }
 
     private static Orders askOrders() {

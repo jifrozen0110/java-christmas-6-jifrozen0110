@@ -4,6 +4,7 @@ import christmas.common.utils.CurrencyUtil;
 import christmas.domain.Badge;
 import christmas.domain.Benefit;
 import christmas.domain.Benefits;
+import christmas.domain.EventPlanner;
 import christmas.domain.Orders;
 import java.time.LocalDate;
 
@@ -113,6 +114,20 @@ public class OutputView {
             return;
         }
         println(orders.toString());
+    }
+
+    public static void printPreviewOfEvent(LocalDate date, Orders orders) {
+        OutputView.printPreviewOfEventMessage(date);
+        OutputView.printOrderMenuList(orders);
+        OutputView.printTotalOrdersPrice(orders);
+    }
+
+    public static void printEventDetails(final EventPlanner eventPlanner) {
+        OutputView.printGiftMenu(eventPlanner.getGifts());
+        OutputView.printBenefitsInfo(eventPlanner.getBenefits());
+        OutputView.printTotalBenefitsPrice(eventPlanner.getBenefits());
+        OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
+        OutputView.printDecemberEventBadge(eventPlanner.getBadge());
     }
 
 }
