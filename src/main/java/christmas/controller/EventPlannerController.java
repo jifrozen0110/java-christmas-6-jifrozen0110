@@ -20,8 +20,8 @@ public class EventPlannerController {
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
         EventPlanner eventPlanner = new EventPlanner(now, orders);
-        OutputView.printGiftMenu(eventPlanner.getGifts());
         Benefits benefits = eventPlanner.getBenefits();
+        OutputView.printGiftMenu(eventPlanner.getGifts());
         OutputView.printBenefitsInfo(benefits);
         OutputView.printTotalBenefitsPrice(benefits);
         OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());

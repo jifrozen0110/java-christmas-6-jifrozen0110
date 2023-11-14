@@ -106,11 +106,9 @@ public class OutputView {
         println(GIFT_MENU_MESSAGE);
         if (orders.size() == 0) {
             println(NOTHING);
-            println();
             return;
         }
         println(orders.toString());
-        println();
     }
 
 }
