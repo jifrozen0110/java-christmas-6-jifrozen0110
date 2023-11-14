@@ -13,6 +13,14 @@ public class StarEvent implements Event {
     private static final int BASE_DISCOUNT = 1000;
 
     @Override
+    public boolean validatePrice(Orders orders) {
+        if (orders.getTotalPrice() >= 10_000) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean isValidDay(final LocalDate localDate) {
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
         if (!localDate.isAfter(START_DAY) || !localDate.isBefore(END_DAY)) {
@@ -29,7 +37,7 @@ public class StarEvent implements Event {
 
     @Override
     public int applyDiscount(final Orders orders, final LocalDate localDate) {
-        if (!isValidDay(localDate)) {
+        if (!isValidDay(localDate) || !validatePrice(orders)) {
             return 0;
         }
         return BASE_DISCOUNT;

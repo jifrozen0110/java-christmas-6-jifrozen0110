@@ -3,6 +3,7 @@ package christmas.domain;
 import java.time.LocalDate;
 
 public interface Gift {
+    boolean validatePrice(Orders orders);
 
     boolean isValidDay(LocalDate localDate);
 

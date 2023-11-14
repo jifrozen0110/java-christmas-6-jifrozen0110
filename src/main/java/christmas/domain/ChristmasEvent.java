@@ -9,8 +9,16 @@ public class ChristmasEvent implements Event {
             SystemConst.START_DAY);
     private static final LocalDate END_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
             SystemConst.CHRISTMAS_DAY);
-    private static final int BASE_DISCOUNT = 1000;
+    private static final int BASE_DISCOUNT = 1_000;
     private static final int DAILY_INCREMENT = 100;
+
+    @Override
+    public boolean validatePrice(Orders orders) {
+        if (orders.getTotalPrice() >= 10_000) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean isValidDay(final LocalDate localDate) {
@@ -22,7 +30,7 @@ public class ChristmasEvent implements Event {
 
     @Override
     public int applyDiscount(final Orders orders, final LocalDate localDate) {
-        if (!isValidDay(localDate)) {
+        if (!isValidDay(localDate) || !validatePrice(orders)) {
             return 0;
         }
         return BASE_DISCOUNT + (localDate.compareTo(START_DAY)) * DAILY_INCREMENT;
