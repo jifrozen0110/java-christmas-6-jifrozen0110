@@ -13,18 +13,12 @@ public class DecemberGift implements Gift {
 
     @Override
     public boolean validatePrice(Orders orders) {
-        if (orders.getTotalPrice() >= EVENT_EXECUTION_MONEY) {
-            return true;
-        }
-        return false;
+        return orders.getTotalPrice() >= EVENT_EXECUTION_MONEY;
     }
 
     @Override
-    public boolean isValidDay(LocalDate localDate) {
-        if (localDate.isAfter(START_DAY) && localDate.isBefore(END_DAY)) {
-            return true;
-        }
-        return false;
+    public boolean isValidDay(final LocalDate localDate) {
+        return !localDate.isBefore(START_DAY) && !localDate.isAfter(END_DAY);
     }
 
     @Override
