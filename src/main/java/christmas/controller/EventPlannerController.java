@@ -19,11 +19,13 @@ public class EventPlannerController {
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
         EventPlanner eventPlanner = new EventPlanner(now, orders);
+        OutputView.printGiftMenu(eventPlanner.getGifts());
         Benefits benefits = eventPlanner.getBenefits();
         OutputView.printBenefitsInfo(benefits);
         OutputView.printTotalBenefitsPrice(benefits);
         OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
         OutputView.printDecemberEventBadge(eventPlanner.getBadge());
+
     }
 
     private static Orders askOrders() {

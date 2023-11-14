@@ -19,6 +19,7 @@ public class OutputView {
     private static final String TOTAL_BENEFITS_PRICE_MESSAGE = "<총혜택 금액>";
     private static final String ESTIMATED_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String DECEMBER_EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
+    private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
 
 
     public static void print(final String text) {
@@ -83,5 +84,10 @@ public class OutputView {
             return;
         }
         println(badge.getName());
+    }
+
+    public static void printGiftMenu(final Orders orders) {
+        println(GIFT_MENU_MESSAGE);
+        print(orders.toString());
     }
 }

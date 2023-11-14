@@ -6,7 +6,9 @@ import java.util.List;
 
 public class EventPlanner {
     private List<Event> events = new ArrayList<>();
+    private List<Gift> gifts = new ArrayList<>();
     private Benefits benefits = new Benefits();
+    private Orders giftOrders = new Orders();
     private LocalDate date;
     private Orders orders;
 
@@ -17,6 +19,7 @@ public class EventPlanner {
         events.add(new WeekdayEvent());
         events.add(new WeekendEvent());
         events.add(new StarEvent());
+        gifts.add(new DecemberGift());
     }
 
     public Benefits getBenefits() {
@@ -27,7 +30,17 @@ public class EventPlanner {
             }
             benefits.add(new Benefit(event.getName(), price));
         }
+
+        for (Gift gift : gifts) {
+            Menu giftMenu = gift.getGift(orders, date);
+            benefits.add(new Benefit(gift.getName(), giftMenu.getPrice()));
+            giftOrders.add(Order.of(giftMenu.getName(), 1));
+        }
         return benefits;
+    }
+
+    public Orders getGifts() {
+        return giftOrders;
     }
 
     public Badge getBadge() {
@@ -41,7 +54,7 @@ public class EventPlanner {
     }
 
     public int getTotalPriceArfterBenefits() {
-        return orders.getTotalPrice() - benefits.getTotalBenefits();
+        return orders.getTotalPrice() - benefits.getTotalBenefits() + giftOrders.getTotalPrice();
     }
 
 }
