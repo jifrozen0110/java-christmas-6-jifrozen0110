@@ -3,7 +3,7 @@ package christmas.domain;
 import christmas.common.consts.SystemConst;
 import java.time.LocalDate;
 
-public class ChrismasEvent implements Event {
+public class ChristmasEvent implements Event {
     private static final String NAME = "크리스마스 디데이 할인";
     private static final LocalDate START_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
             SystemConst.START_DAY);
