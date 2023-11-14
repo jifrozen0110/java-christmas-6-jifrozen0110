@@ -4,7 +4,7 @@ import christmas.common.consts.SystemConst;
 import java.time.LocalDate;
 
 public class DecemberGift implements Gift {
-    public static final int EVENT_EXECUTION_MONEY = 10_000;
+    public static final int EVENT_EXECUTION_MONEY = 120_000;
     private static final String NAME = "증정 이벤트";
     private static final LocalDate START_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
             SystemConst.START_DAY);
@@ -26,10 +26,7 @@ public class DecemberGift implements Gift {
         if (!isValidDay(localDate) || !validatePrice(orders)) {
             return null;
         }
-        if (orders.getTotalPrice() >= 120_000) {
-            return Menu.CHAMPAGNE;
-        }
-        return null;
+        return Menu.CHAMPAGNE;
     }
 
     @Override
