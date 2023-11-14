@@ -17,7 +17,7 @@ public class DateValidator {
     private static final int NOVEMBER = 11;
     private static final int FEBRUARY = 2;
 
-    public static void validate(int month, int day) {
+    public static void validate(final int month, final int day) {
         if (month < MIN_MONTH || month > MAX_MONTH) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_DAY_INPUT_ERROR.getErrorMessage());
         }
