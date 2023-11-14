@@ -9,36 +9,19 @@ public class EventPlanner {
     private List<Gift> gifts = new ArrayList<>();
     private Benefits benefits = new Benefits();
     private Orders giftOrders = new Orders();
-    private LocalDate date;
-    private Orders orders;
+    private final LocalDate date;
+    private final Orders orders;
 
-    public EventPlanner(LocalDate date, Orders orders) {
+    public EventPlanner(final LocalDate date, final Orders orders) {
         this.date = date;
         this.orders = orders;
-        events.add(new ChrismasEvent());
-        events.add(new WeekdayEvent());
-        events.add(new WeekendEvent());
-        events.add(new StarEvent());
-        gifts.add(new DecemberGift());
+        initializeEvents();
+        initializeGifts();
     }
 
     public Benefits getBenefits() {
-        for (Event event : events) {
-            int price = event.applyDiscount(orders, date);
-            if (price == 0) {
-                continue;
-            }
-            benefits.add(new Benefit(event.getName(), price));
-        }
-
-        for (Gift gift : gifts) {
-            Menu giftMenu = gift.getGift(orders, date);
-            if (giftMenu == null) {
-                continue;
-            }
-            benefits.add(new Benefit(gift.getName(), giftMenu.getPrice()));
-            giftOrders.add(Order.of(giftMenu.getName(), 1));
-        }
+        calculateEventBenefits();
+        calculateGiftBenefits();
         return benefits;
     }
 
@@ -60,4 +43,35 @@ public class EventPlanner {
         return orders.getTotalPrice() - benefits.getTotalBenefits() + giftOrders.getTotalPrice();
     }
 
+    private void initializeEvents() {
+        events.add(new ChristmasEvent());
+        events.add(new WeekdayEvent());
+        events.add(new WeekendEvent());
+        events.add(new StarEvent());
+    }
+
+    private void initializeGifts() {
+        gifts.add(new DecemberGift());
+    }
+
+    private void calculateGiftBenefits() {
+        for (Gift gift : gifts) {
+            Menu giftMenu = gift.getGift(orders, date);
+            if (giftMenu == null) {
+                continue;
+            }
+            benefits.add(new Benefit(gift.getName(), giftMenu.getPrice()));
+            giftOrders.add(Order.of(giftMenu.getName(), 1));
+        }
+    }
+
+    private void calculateEventBenefits() {
+        for (Event event : events) {
+            int price = event.applyDiscount(orders, date);
+            if (price == 0) {
+                continue;
+            }
+            benefits.add(new Benefit(event.getName(), price));
+        }
+    }
 }
