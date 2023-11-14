@@ -13,7 +13,19 @@ public class Orders implements Iterable<Order> {
         this.orders = new HashSet<>();
     }
 
-    public void add(Order order) {
+    public void validate() {
+        boolean isBeverage = true;
+        for (Order order : orders) {
+            if (order.getCategory() != Category.BEVERAGE) {
+                isBeverage = false;
+            }
+        }
+        if (isBeverage) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
+        }
+    }
+
+    public void add(final Order order) {
         if (size() + order.getCount() > MAX_ORDER_SIZE) {
             OutputView.printErr(ErrorMessage.OUT_BOUND_OF_MAX_ORDER_ERROR.getErrorMessage());
             return;

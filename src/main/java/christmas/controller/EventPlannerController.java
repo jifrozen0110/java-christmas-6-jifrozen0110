@@ -34,8 +34,10 @@ public class EventPlannerController {
             String[] orderValues = InputView.nextArrString();
             Orders orders = new Orders();
             for (String orderValue : orderValues) {
-                orders.add(Order.parseOrder(orderValue));
+                Order order = Order.parseOrder(orderValue);
+                orders.add(order);
             }
+            orders.validate();
             return orders;
         } catch (IllegalArgumentException e) {
             OutputView.printErr(ErrorMessage.INVALID_INPUT_ORDER_ERROR.getErrorMessage());
