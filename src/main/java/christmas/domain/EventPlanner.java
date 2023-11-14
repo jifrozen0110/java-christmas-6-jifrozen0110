@@ -17,16 +17,20 @@ public class EventPlanner {
         this.orders = orders;
         initializeEvents();
         initializeGifts();
+        calculateBenefits();
     }
 
-    public Benefits getBenefits() {
+    public void calculateBenefits() {
         calculateEventBenefits();
         calculateGiftBenefits();
-        return benefits;
     }
 
     public Orders getGifts() {
         return giftOrders;
+    }
+
+    public Benefits getBenefits() {
+        return benefits;
     }
 
     public Badge getBadge() {

@@ -13,6 +13,10 @@ public class Orders implements Iterable<Order> {
         this.orders = new HashSet<>();
     }
 
+    public Orders(final HashSet<Order> orders) {
+        this.orders = orders;
+    }
+
     public void validate() {
         boolean isBeverage = true;
         for (Order order : orders) {

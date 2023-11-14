@@ -2,7 +2,6 @@ package christmas.controller;
 
 import christmas.common.consts.ErrorMessage;
 import christmas.common.consts.SystemConst;
-import christmas.domain.Benefits;
 import christmas.domain.EventPlanner;
 import christmas.domain.Order;
 import christmas.domain.Orders;
@@ -20,10 +19,9 @@ public class EventPlannerController {
         OutputView.printOrderMenuList(orders);
         OutputView.printTotalOrdersPrice(orders);
         EventPlanner eventPlanner = new EventPlanner(now, orders);
-        Benefits benefits = eventPlanner.getBenefits();
         OutputView.printGiftMenu(eventPlanner.getGifts());
-        OutputView.printBenefitsInfo(benefits);
-        OutputView.printTotalBenefitsPrice(benefits);
+        OutputView.printBenefitsInfo(eventPlanner.getBenefits());
+        OutputView.printTotalBenefitsPrice(eventPlanner.getBenefits());
         OutputView.printEstimatedPriceAfterDiscount(eventPlanner.getTotalPriceArfterBenefits());
         OutputView.printDecemberEventBadge(eventPlanner.getBadge());
     }
