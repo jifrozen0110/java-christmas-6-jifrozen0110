@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class StarEvent implements Event {
+    public static final int EVENT_EXECUTION_MONEY = 10_000;
     private static final String NAME = "특별 할인";
     private static final LocalDate START_DAY = LocalDate.of(SystemConst.CURRENT_YEAR, SystemConst.CURRENT_MONTH,
             SystemConst.START_DAY);
@@ -14,7 +15,7 @@ public class StarEvent implements Event {
 
     @Override
     public boolean validatePrice(Orders orders) {
-        if (orders.getTotalPrice() >= 10_000) {
+        if (orders.getTotalPrice() >= EVENT_EXECUTION_MONEY) {
             return true;
         }
         return false;
