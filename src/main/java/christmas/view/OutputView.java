@@ -30,6 +30,10 @@ public class OutputView {
         System.out.println(text);
     }
 
+    public static void println() {
+        System.out.println();
+    }
+
     public static void printErr(final String errorMessage) {
         System.out.println(errorMessage);
     }
@@ -48,43 +52,51 @@ public class OutputView {
 
     public static void printPreviewOfEventMessage(final LocalDate date) {
         println(String.format(PREVIEW_OF_EVENT_MESSAGE, date.getMonthValue(), date.getDayOfMonth()));
+        println();
     }
 
     public static void printOrderMenuList(final Orders orders) {
         println(ORDER_MENU_LIST_MESSAGE);
         print(orders.toString());
+        println();
     }
 
     public static void printTotalOrdersPrice(final Orders orders) {
         println(TOTAL_PRICE_BEFORE_EVENTS_MESSAGE);
         println(CurrencyUtil.fromToKRW(orders.getTotalPrice()));
+        println();
     }
 
     public static void printBenefitsInfo(final Benefits benefits) {
         println(BENEFITS_LIST_MESSAGE);
         if (benefits.size() == 0) {
             println(NOTHING);
+            println();
             return;
         }
         for (Benefit benefit : benefits) {
             println(benefit.getName() + ": -" + CurrencyUtil.fromToKRW(benefit.getPrice()));
         }
+        println();
     }
 
     public static void printTotalBenefitsPrice(final Benefits benefits) {
         println(TOTAL_BENEFITS_PRICE_MESSAGE);
         println("-" + CurrencyUtil.fromToKRW(benefits.getTotalBenefits()));
+        println();
     }
 
     public static void printEstimatedPriceAfterDiscount(final int amount) {
         println(ESTIMATED_PRICE_AFTER_DISCOUNT_MESSAGE);
         println(CurrencyUtil.fromToKRW(amount));
+        println();
     }
 
     public static void printDecemberEventBadge(final Badge badge) {
         println(DECEMBER_EVENT_BADGE_MESSAGE);
         if (badge == null) {
             println(NOTHING);
+            println();
             return;
         }
         println(badge.getName());
@@ -94,8 +106,11 @@ public class OutputView {
         println(GIFT_MENU_MESSAGE);
         if (orders.size() == 0) {
             println(NOTHING);
+            println();
             return;
         }
-        print(orders.toString());
+        println(orders.toString());
+        println();
     }
+
 }
