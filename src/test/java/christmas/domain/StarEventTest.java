@@ -40,7 +40,7 @@ class StarEventTest {
     }
 
     @Test
-    void 평일_할인() {
+    void 특별_할인() {
         orders.add(Order.of("초코케이크", 3));
         orders.add(Order.of("아이스크림", 2));
 
